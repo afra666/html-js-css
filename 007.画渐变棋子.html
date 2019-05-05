@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Gomoku</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+	<canvas id="chess" width="450px" height="450px"></canvas>
+	<script type="text/javascript" src="js/script.js" ></script>
+<body>
+</body>
+</html>
+
+
+@charset "utf-8";
+/* CSS Document */
+canvas{
+	display: block;
+	margin: 50px auto;
+	box-shadow: 6px -9px 20px #efefef,5px 5px 5px #b9b9b9;
+}
+
+
+// JavaScript Document
+var chess=document.getElementById("chess");
+//context=画布
+var context=chess.getContext("2d");
+
+
+
+
+var bg=new Image();
+bg.src="img/bg.png";
+bg.onload=function(){
+	context.drawImage(bg,0,0,450,450);
+	drawChessBoard();
+	oneStep(0,0,true);
+	oneStep(1,1,false);
+	
+}
+var oneStep=function(i,j,me){
+	//me=黑棋=先手
+	context.beginPath();
+	//arc(x,y,半径12,0,2pi)
+	context.arc(15+j*30,15+i*30,12,0,Math.PI*2);
+	context.closePath();
+	/**
+语法
+createRadialGradient(xStart, yStart, radiusStart, xEnd, yEnd, radiusEnd)
+参数
+参数	描述
+xStart, yStart	开始圆的圆心的坐标。
+radiusStart	开始圆的半径。
+xEnd, yEnd	结束圆的圆心的坐标。
+radiusEnd	结束圆的半径。
+	*/
+	var gradient=context.createRadialGradient(15+j*30,15+i*30,12,15+j*30,15+i*30,0);
+	if(me){
+	   gradient.addColorStop(0,"#0a0a0a");
+		 gradient.addColorStop(1,"#636766");
+	 }else{
+		 gradient.addColorStop(0,"#d1d1d1");
+		  gradient.addColorStop(1,"#f9f9f9");
+	}
+	context.fillStyle=gradient;
+	context.fill();
+	//渐变色
+	
+	
+}
+//var oneStep=function(i,j,me){
+//	//me=黑棋=先手
+//	context.beginPath();
+//	//arc(x,y,半径12,0,2pi)
+//	context.arc(15+j*30,15+i*30,12,0,Math.PI*2);
+//	if(me){
+//	   context.fillStyle="black";
+//		context.fill();
+//	 }else{
+//		context.fillStyle="white";
+//		context.fill();
+//	}
+//	//渐变色
+//	
+//	context.closePath();
+//}
+
+var drawChessBoard=function(){
+	//起点终点绘制
+	for(var i=0;i<15;i++){
+	//竖线,x变,y不变
+	context.moveTo(15+i*30,15);
+	context.lineTo(15+i*30,435);
+	context.stroke();
+	//横线,x不变 y变
+	context.moveTo(15,15+i*30);
+	context.lineTo(435,15+i*30);
+	context.stroke();
+	}
+
+	//画5个圆点
+	context.beginPath();
+	context.arc(15+7*30,15+7*30,3,0,2*Math.PI);
+	context.stroke();
+	context.fill();
+	context.beginPath();
+	context.arc(15+3*30,15+3*30,3,0,2*Math.PI);
+//	context.stroke();
+	context.fill();
+	context.beginPath();
+	context.arc(15+11*30,15+3*30,3,0,2*Math.PI);
+//	context.stroke();
+	context.fill();
+	context.beginPath();
+	context.arc(15+3*30,15+11*30,3,0,2*Math.PI);
+	context.stroke();
+	context.fill();
+	context.beginPath();
+	context.arc(15+11*30,15+11*30,3,0,2*Math.PI);
+//	context.stroke();
+	context.fill();
+}
+
+
+
+
+
+
+
+
+
