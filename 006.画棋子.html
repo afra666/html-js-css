@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Gomoku</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+	<canvas id="chess" width="450px" height="450px"></canvas>
+	<script type="text/javascript" src="js/script.js" ></script>
+<body>
+</body>
+</html>
+
+
+
+
+@charset "utf-8";
+/* CSS Document */
+canvas{
+	display: block;
+	margin: 50px auto;
+	box-shadow: 6px -9px 20px #efefef,5px 5px 5px #b9b9b9;
+}
+
+
+
+
+// JavaScript Document
+var chess=document.getElementById("chess");
+//context=画布
+var context=chess.getContext("2d");
+
+
+
+
+var bg=new Image();
+bg.src="img/bg.png";
+bg.onload=function(){
+	context.drawImage(bg,0,0,450,450);
+	drawChessBoard();
+	context.beginPath();
+	context.arc(45,45,12,0,Math.PI*2);
+//	context.stroke();
+	context.fill();
+	
+	context.closePath();
+	
+}
+
+
+var drawChessBoard=function(){
+	//起点终点绘制
+	for(var i=0;i<15;i++){
+	//竖线,x变,y不变
+	context.moveTo(15+i*30,15);
+	context.lineTo(15+i*30,435);
+	context.stroke();
+	//横线,x不变 y变
+	context.moveTo(15,15+i*30);
+	context.lineTo(435,15+i*30);
+	context.stroke();
+	}
+
+	//画5个圆点
+	context.beginPath();
+	context.arc(15+7*30,15+7*30,3,0,2*Math.PI);
+	context.stroke();
+	context.fill();
+	context.beginPath();
+	context.arc(15+3*30,15+3*30,3,0,2*Math.PI);
+//	context.stroke();
+	context.fill();
+	context.beginPath();
+	context.arc(15+11*30,15+3*30,3,0,2*Math.PI);
+//	context.stroke();
+	context.fill();
+	context.beginPath();
+	context.arc(15+3*30,15+11*30,3,0,2*Math.PI);
+	context.stroke();
+	context.fill();
+	context.beginPath();
+	context.arc(15+11*30,15+11*30,3,0,2*Math.PI);
+//	context.stroke();
+	context.fill();
+}
+
