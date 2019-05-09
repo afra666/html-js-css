@@ -24,14 +24,28 @@ canvas{
 
 
 
+
+
 let c=document.getElementById("canvas");
 let ctx=c.getContext("2d");
-let birdPosX= 140;
-let birdPosY= 250;
-let birdY= 0;
-let birdY= 0;
-let birdW= 75;
-let birdH= 50;
+
+//以下三组为固定值
+let aBirdSrcX=0;
+let aBirdSrcY=0;
+
+let bBirdSrcX=75;
+let bBirdSrcY=0;
+
+let cBirdSrcX=150;
+let cBirdSrcY=0;
+
+// 每只鸟的宽75长50都相等
+let birdW=75;
+let birdH=50;
+//Canvas起始鸟位置,可以为任意值
+let birdCvsX= 140;
+let birdCvsY= 250;
+
 
 function bgInit() {
     let bg1=new Image();
@@ -43,10 +57,13 @@ function bgInit() {
     ctx.drawImage(bg2,0,510);
 }
 function birdInit() {
-    let bird=new Image();
-    bird.src="img/bird.png";
+    let birdImg=new Image();
+    birdImg.src="img/bird.png";
     // sx:图片源的起始裁剪位置,dx:dy为canvas坐标
-    ctx.drawImage(bird,0,0,birdW,birdH,birdPosX,birdPosY,birdW,birdH);
+    //画三只鸟,a状态鸟位置为100,100,b状态鸟位置为100,200,c状态鸟位置为100,300,
+    ctx.drawImage(birdImg,aBirdSrcX,aBirdSrcY,birdW,birdH,100,100,birdW,birdH);
+    ctx.drawImage(birdImg,bBirdSrcX,bBirdSrcY,birdW,birdH,100,200,birdW,birdH);
+    ctx.drawImage(birdImg,cBirdSrcX,cBirdSrcY,birdW,birdH,100,300,birdW,birdH);
 }
 function starGame() {
     bgInit();
