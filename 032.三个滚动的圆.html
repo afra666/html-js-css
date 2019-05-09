@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <style type="text/css">
+            canvas{
+                border: 1px solid yellow;
+            }
+        </style>
+
+        <canvas id="myCanvas" width="400" height="600"></canvas>
+
+        <script type="text/javascript">
+    	let c=document.getElementById("myCanvas");
+    	let ctx=c.getContext("2d");
+
+
+
+        let x1=0;
+        let x2=100;
+        let x3=300;
+        setInterval(function () {
+            ctx.clearRect(0,0,400,600);
+
+            ctx.beginPath();
+            ctx.arc(x1,100,32,0,2*Math.PI);
+            ctx.closePath();
+            ctx.fillStyle="yellow";
+            ctx.strokeStyle="orange";
+            ctx.fill();
+            ctx.stroke();
+            x1+=3;
+
+            ctx.beginPath();
+            ctx.arc(x2,300,32,0,2*Math.PI);
+            ctx.closePath();
+            ctx.fillStyle="yellow";
+            ctx.strokeStyle="orange";
+            ctx.fill();
+            ctx.stroke();
+            x2+=1;
+
+            ctx.beginPath();
+            ctx.arc(x3,300,32,0,2*Math.PI);
+            ctx.closePath();
+            ctx.fillStyle="yellow";
+            ctx.strokeStyle="orange";
+            ctx.fill();
+            ctx.stroke();
+            x3+=1;
+
+
+        },10);
+        </script>
+</body>
+</html>
