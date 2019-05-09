@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <style type="text/css">
+            canvas{
+                border: 1px solid yellow;
+            }
+        </style>
+
+        <canvas id="myCanvas" width="400" height="600"></canvas>
+
+        <script type="text/javascript">
+    	let c=document.getElementById("myCanvas");
+    	let ctx=c.getContext("2d");
+
+        function Ball(x,y,r,speed) {
+            this.x=x;
+            this.y=y;
+            this.r=r;
+            this.speed=speed;
+        }
+
+        //canvas API 画  ,渲染方法
+        Ball.prototype.render=function () {
+            ctx.beginPath();
+            ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+            ctx.closePath();
+            ctx.fill();
+        }
+        //canvas更新,更新方法
+        Ball.prototype.update=function(){
+            this.x++;
+        }
+
+        //实例化
+        let b1=new Ball(100,100,5,2);
+        let b2=new Ball(100,150,5,2);
+        let b3=new Ball(100,200,5,2);
+        let b4=new Ball(100,250,5,2);
+        let b5=new Ball(100,300,5,2);
+        //定时器
+        setInterval(function () {
+            ctx.clearRect(0,0,400,600);
+
+            b1.update();
+            b1.render();
+
+            b2.update();
+            b2.render();
+
+            b3.update();
+            b3.render();
+
+            b4.update();
+            b4.render();
+
+            b5.update();
+            b5.render();
+        })
+        </script>
+</body>
+</html>
