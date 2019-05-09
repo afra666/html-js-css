@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <canvas id="canvas" width="400px" height="600px" style="border: dodgerblue 1px solid"></canvas>
+    <script type="text/javascript" src="js/run.js"></script>
+</head>
+<body onload="starGame()">
+
+
+
+</body>
+</html>
+
+
+
+canvas{
+
+    display: block;
+    box-shadow: 8px 8px 3px #cad281,2px 7px 7px #e4d999;
+}
+
+
+
+let c=document.getElementById("canvas");
+let ctx=c.getContext("2d");
+let birdPosX= 140;
+let birdPosY= 250;
+let birdY= 0;
+let birdY= 0;
+let birdW= 75;
+let birdH= 50;
+
+function bgInit() {
+    let bg1=new Image();
+    let bg2=new Image();
+    bg1.src="img/bg1.png";
+    bg2.src="img/bg2.png";
+
+    ctx.drawImage(bg1,0,0);
+    ctx.drawImage(bg2,0,510);
+}
+function birdInit() {
+    let bird=new Image();
+    bird.src="img/bird.png";
+    // sx:图片源的起始裁剪位置,dx:dy为canvas坐标
+    ctx.drawImage(bird,0,0,birdW,birdH,birdPosX,birdPosY,birdW,birdH);
+}
+function starGame() {
+    bgInit();
+    birdInit();
+}
+starGame();
