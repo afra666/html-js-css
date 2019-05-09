@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: black;
+            overflow: hidden;
+        }
+        canvas{
+            border: 1px solid yellow;
+        }
+        </style>
+
+        <canvas ></canvas>
+
+        <script type="text/javascript">
+    	let c=document.querySelector("canvas");
+    	let ctx=c.getContext("2d");
+
+    	c.width=document.documentElement.clientWidth;
+    	c.height=document.documentElement.clientHeight;
+
+    	//小球
+            function Ball(x,y) {
+                this.x=x;
+                this.y=y;
+                this.r=30;
+                this.color="rgb("+(Math.random()*256)+","+(Math.random()*256)+","+(Math.random()*256)+")";
+                this.dx=Math.random()*8-4;
+                this.dy=Math.random()*8-4;  //y的变化值
+                ballsArr.push(this);
+            }
+            Ball.prototype.render=function () {
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.r,0,Math.PI*2,true);
+                ctx.closePath();
+                ctx.fillStyle=this.color;
+                ctx.fill();
+
+            }
+            Ball.prototype.update=function(){
+                this.x+=this.dx;
+                this.y+=this.dy;
+                this.r--;
+                if(this.r<0){
+                    this.godie();
+                }
+            }
+            //自删
+            Ball.prototype.godie=function(){
+                for (let i = 0; i <ballsArr.length; i++) {
+                    if (ballsArr[i]=this) {
+                        ballsArr.splice(i,1);
+                    }
+                }
+            }
+
+            //监听
+        c.onmousemove=function(){
+                new Ball(event.clientX,event.clientY);
+        }
+            let ballsArr=[];
+            setInterval(function () {
+                //清屏
+                ctx.clearRect(0,0,c.width,c.height);
+                //渲染更新
+                for (let i = 0; i <ballsArr.length; i++) {
+                    ballsArr[i].update();
+                    //验证是否为空,是否存在,半径非负数
+                    ballsArr[i]&&ballsArr[i].render();
+
+                }
+            },20);
+
+        </script>
+</body>
+</html>
