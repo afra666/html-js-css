@@ -32,7 +32,8 @@
                 this.x=x;
                 this.y=y;
                 this.r=30;
-                this.color="rgb("+(Math.random()*256)+","+(Math.random()*256)+","+(Math.random()*256)+")";
+                //透明度0.5
+                this.color="rgb("+(Math.random()*256)+","+(Math.random()*256)+","+(Math.random()*256)+",0.5)";
                 this.dx=Math.random()*8-4;
                 this.dy=Math.random()*8-4;  //y的变化值
                 ballsArr.push(this);
