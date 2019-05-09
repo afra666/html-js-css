@@ -1,0 +1,30 @@
+    <style type="text/css">
+            canvas{
+                border: 1px solid yellow;
+            }
+        </style>
+
+        <canvas id="myCanvas" width="400" height="600"></canvas>
+
+        <script type="text/javascript">
+    	let c=document.getElementById("myCanvas");
+    	let ctx=c.getContext("2d");
+
+
+    	let x=100;
+    	setInterval(function () {
+    	    //清屏
+            ctx.clearRect(0,0,600,400);
+            //画新圆
+
+            ctx.beginPath();
+            let r=ctx.arc(x,100,50,0,2*Math.PI);
+            ctx.closePath();
+            ctx.fillStyle="lightblue";
+            ctx.fill();
+            x++;
+            },20);
+
+    	// 上屏幕的元素不能改变形状和位置,只能重新画
+
+        </script>
