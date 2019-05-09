@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello world</title>
+
+    <style type="text/css">
+        canvas{
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400" id="mycanvas"></canvas>
+    <script type="text/javascript">
+        let c=document.getElementById("mycanvas");
+        let ctx=c.getContext("2d");
+        ctx.fillRect(100,100,32,32);
+    </script>
+</body>
+</html>
