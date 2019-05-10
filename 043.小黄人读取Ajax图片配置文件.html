@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <style type="text/css">
+                canvas{
+                    border: 1px solid yellow;
+                }
+            </style>
+
+            <canvas id="myCanvas" width="1000" height="600"></canvas>
+
+            <script type="text/javascript">
+        	let c=document.getElementById("myCanvas");
+        	let ctx=c.getContext("2d");
+
+        	let knight=new Image();
+        	knight.src="img/knight.png";
+
+        	//使用Ajax方法读取资源文件R.json
+                let xhr=new XMLHttpRequest();
+                xhr.onreadystatechange=function () {
+                    if (xhr.readyState==4){
+                        console.log(xhr.responseText);
+                        let R_Obj=JSON.parse(xhr.responseText);
+                        console.log(R_Obj.images.length);
+                    }
+                }
+                xhr.open("get","R.json",true);
+        	    xhr.send(null);
+
+
+            </script>
+</body>
+</html>
+//输出:
+
+{
+  "images": [
+    {"name":"bg","url": "img/bg.png" },
+    {"name":"bird","url": "img/bird.png" },
+    {"name":"brick","url": "img/brick.png" },
+    {"name":"pipedown","url": "img/pipedown.png" },
+
+    {"name":"pipeup","url": "img/pipeup.png" },
+    {"name":"start","url": "img/start.png" },
+    {"name":"endscore","url": "img/endscore.png" }
+  ]
+
+}
+7
+
+
+//R.json
+
+{
+  "images": [
+    {"name":"bg","url": "img/bg.png" },
+    {"name":"bird","url": "img/bird.png" },
+    {"name":"brick","url": "img/brick.png" },
+    {"name":"pipedown","url": "img/pipedown.png" },
+
+    {"name":"pipeup","url": "img/pipeup.png" },
+    {"name":"start","url": "img/start.png" },
+    {"name":"endscore","url": "img/endscore.png" }
+  ]
+
+}
