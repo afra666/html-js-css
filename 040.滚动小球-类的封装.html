@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <style type="text/css">
+                canvas{
+                    border: 1px solid yellow;
+                }
+            </style>
+
+            <canvas id="myCanvas" width="400" height="600"></canvas>
+
+            <script type="text/javascript">
+        	let c=document.getElementById("myCanvas");
+        	let ctx=c.getContext("2d");
+
+
+
+        	let ballsArr=[];
+        	function Ball(x,y) {
+                this.x=x;
+                this.y=y;
+                this.r=20;
+
+            }
+            Ball.prototype.render=function () {
+                ctx.clearRect(0,0,c.width,c.height);
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+                ctx.fill();
+                ctx.stroke();
+                ctx.closePath();
+            }
+            Ball.prototype.update=function () {
+
+        	    this.x+=2;
+
+
+            }
+            let b=new Ball(100,100);
+
+        	setInterval(function () {
+
+        	    b.render();
+                b.update();
+            },20);
+            </script>
+</head>
+<body>
+
+</body>
+</html>
