@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flappy Bird</title>
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            /*滚动条*/
+            body{
+                overflow: hidden;
+            }
+    		canvas{
+    			border: 1px solid black;
+    		}
+
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script type="text/javascript" src="js/Game.js"></script>
+    <script type="text/javascript">
+    	let game=new Game({
+            "canvasid":"#myCanvas",
+            "Rjsonurl":"R.json"
+        });
+    </script>
+</body>
+</html>
+
+
+//Game.js
+(function () {
+    //全局
+    let Game=window.Game=function (params) {
+        //得到画布
+        this.canvas=document.querySelector(params.canvasid);
+        //上下文
+        this.ctx=this.canvas.getContext("2d");
+
+
+        this.Rjsonurl=params.Rjsonurl;
+
+        //设置宽度和高度,Game.init开始执行
+        this.init();
+        //读取资源,异步(事件监听,Ajax),回调函数
+        this.loadAllResource(function () {
+            
+        });
+    }
+    //初始化,设置宽高
+    Game.prototype.init=function () {
+
+        let window_w=document.documentElement.clientWidth;
+        let window_h=document.documentElement.clientHeight;
+        if (window_w>414){
+            window_w=414;
+        }else if (window_w<320){
+            window_w=320;
+        }
+        if (window_h>736){
+            window_h=736;
+        }else if (window_h<568){
+            window_h=568;
+        }
+        this.canvas.width=window_w;
+        this.canvas.height=window_h;
+    }
+
+    //读取资源
+    Game.prototype.loadAllResource=function () {
+        //准备一个空R对象
+        this.R={};
+        //备份
+        let self=this;
+        //计数器
+        let doneNum=0;
+        let xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState==4) {
+                let Robj=JSON.parse(xhr.responseText);
+                console.log(Robj.images.length);
+                for (let i = 0; i <Robj.images.length ; i++) {
+                    //创建一个同名key
+                    self.R[Robj.images[i].name]=new Image();
+                    //请求
+                    self.R[Robj.images[i].name].src=Robj.images[i].url;
+                    //监听
+                    self.R[Robj.images[i].name].onload=function () {
+                        doneNum++;
+                        //提示文字
+                        self.ctx.clearRect(0,0,self.canvas.width,self.canvas.height);
+                        let txt="正在加载第"+doneNum+"/"+Robj.images.length+
+                            "张图片";
+                        self.ctx.fillText(txt,10,10);
+                    }
+                }
+                console.log(Robj.images);
+            }
+        }
+        xhr.open("get",this.Rjsonurl,true);
+        xhr.send(null);
+    }
+})();
+
+
+//R.json
+{
+  "images": [
+    {"name": "bg_day","url": "R/img/bg_day.png"},
+    {"name": "bg_night","url": "R/img/bg_night.png"},
+
+    {"name": "bird0_0","url": "R/img/bird0_0.png"},
+    {"name": "bird0_1","url": "R/img/bird0_1.png"},
+    {"name": "bird0_2","url": "R/img/bird0_2.png"},
+
+    {"name": "bird1_0","url": "R/img/bird1_0.png"},
+    {"name": "bird1_1","url": "R/img/bird1_1.png"},
+    {"name": "bird1_2","url": "R/img/bird1_2.png"},
+
+    {"name": "bird2_0","url": "R/img/bird2_0.png"},
+    {"name": "bird2_1","url": "R/img/bird2_1.png"},
+    {"name": "bird2_2","url": "R/img/bird2_2.png"}
+
+  ]
+}
