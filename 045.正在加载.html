@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <style type="text/css">
+                canvas{
+                    border: 1px solid yellow;
+                }
+            </style>
+
+            <canvas id="myCanvas" width="1000" height="600"></canvas>
+
+            <script type="text/javascript">
+        	let c=document.getElementById("myCanvas");
+        	let ctx=c.getContext("2d");
+
+        	let alreadyLoadNum=0;
+        	//资源对象
+        	let R={};
+        	//使用Ajax方法读取资源文件R.json
+                let xhr=new XMLHttpRequest();
+                xhr.onreadystatechange=function () {
+                    if (xhr.readyState==4){
+                        console.log(xhr.responseText);
+                        let R_Obj=JSON.parse(xhr.responseText);
+                        console.log(R_Obj.images.length);
+                        //创建R对象中的对应的键,键的名字就是数组中的name属性
+                        for (let i = 0; i <R_Obj.images.length ; i++) {
+
+                            R[R_Obj.images[i].name]=new Image();
+                            //发出http请求
+                            R[R_Obj.images[i].name].src=R_Obj.images[i].url;
+
+                            //添加监听,当某张图片被读取
+                            R[R_Obj.images[i].name].onload=function () {
+                                //计数器加一
+                                alreadyLoadNum++;
+
+                                ctx.clearRect(0,0,c.width,c.height);
+                                ctx.font="80px Arial";
+                                ctx.fillText("正在加载第 "+alreadyLoadNum+"/"+
+                                R_Obj.images.length+"张图片,请稍后...",100,100);
+                                if (alreadyLoadNum==R_Obj.images.length){
+                                    console.log("全部加载完毕");
+                                }
+                            }
+
+                        }
+                        console.log(R);
+                    }
+                }
+                xhr.open("get","R.json",true);
+        	    xhr.send(null);
+
+
+            </script>
+</body>
+</html>
