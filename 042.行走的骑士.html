@@ -10,7 +10,7 @@
                 }
             </style>
 
-            <canvas id="myCanvas" width="400" height="600"></canvas>
+            <canvas id="myCanvas" width="1000" height="600"></canvas>
 
             <script type="text/javascript">
         	let c=document.getElementById("myCanvas");
@@ -20,16 +20,21 @@
         	bgImg.src="img/knight.png";
 
         	let step=0;
+        	let posX=0;
         	let w=90;
         	let h=90;
         	bgImg.onload=function () {
                 //load之后再编写定时器
         	    setInterval(function () {
         	        ctx.clearRect(0,0,c.width,c.height);
-                    ctx.drawImage(bgImg,step*90,180,w,h,100,100,w,h);
+                    ctx.drawImage(bgImg,step*90,180,w,h,posX,100,w,h);
                     step++;
+                    posX+=20;
                     if (step>3){
                         step=0;
+                    }
+                    if (posX>1000){
+                        posX=0;
                     }
                 },50);
             }
