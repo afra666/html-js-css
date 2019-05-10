@@ -52,3 +52,39 @@
 <div id="div1" onmouseover="toBlue()" onmouseout="restore()"></div>
 </body>
 </html>
+
+
+//变量形式
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: chocolate;
+        }
+    </style>
+    <script>
+        function toBlue() {
+            let oDiv=document.getElementById("div1");
+
+            oDiv.style.width="300px";
+            oDiv.style.height="300px";
+            oDiv.style.background="blue";
+        }
+        function restore() {
+            let oDiv=document.getElementById("div1");
+            oDiv.style.width="200px";
+            oDiv.style.height="200px";
+            oDiv.style.background="chocolate";
+        }
+    </script>
+</head>
+<body>
+<div id="div1" onmouseover="toBlue()" onmouseout="restore()"></div>
+</body>
+</html>
