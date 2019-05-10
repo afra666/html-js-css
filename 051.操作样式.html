@@ -19,3 +19,36 @@
      onmouseout="document.getElementById('div1').style.width='200px';document.getElementById('div1').style.height='200px';" ></div>
 </body>
 </html>
+
+
+
+//函数形式
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background: chocolate;
+        }
+    </style>
+    <script>
+        function toBlue() {
+            document.getElementById("div1").style.width="300px";
+            document.getElementById("div1").style.height="300px";
+            document.getElementById("div1").style.background="blue";
+        }
+        function restore() {
+            document.getElementById("div1").style.width="200px";
+            document.getElementById("div1").style.height="200px";
+            document.getElementById("div1").style.background="chocolate";
+        }
+    </script>
+</head>
+<body>
+<div id="div1" onmouseover="toBlue()" onmouseout="restore()"></div>
+</body>
+</html>
