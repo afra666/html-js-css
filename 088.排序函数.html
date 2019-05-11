@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+    window.onload=function () {
+        let a=[86,2,59,4,5,6];
+        //只能排序字符串
+        a.sort();
+        alert(a);
+        //输出2,4,5,59,6,86
+
+        a.sort(function sortNum(n1,n2) {
+            if (n1<n2) {
+                return -1;
+            }else if(n1>n2){
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        })
+        alert(a);
+    }
+    </script>
+</head>
+<body>
+
+
+</div>
+</body>
+</html>
+
+
+//或者
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+    window.onload=function () {
+        let a=[86,2,59,4,5,6];
+        //只能排序字符串
+        a.sort();
+        alert(a);
+        //输出2,4,5,59,6,86
+
+        a.sort(function sortNum(n1,n2) {
+            return n1-n2;
+        })
+        alert(a);
+    }
+    </script>
+</head>
+<body>
+
+
+</div>
+</body>
+</html>
