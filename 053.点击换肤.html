@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link id="l1" rel="stylesheet" type="text/css" href="css2.css" />
+    
+    <script>
+    	function skin1() {
+            let s1=document.getElementById("l1");
+            s1.href="css1.css";
+        }
+    	function skin2() {
+            let s1=document.getElementById("l1");
+            s1.href="css2.css";
+        }
+    </script>
+</head>
+
+<body>
+<input type="button" value="皮肤1" onclick="skin1()">
+<input type="button" value="皮肤2" onclick="skin2()">
+</body>
+</html>
+
+
+
+body{
+    background: black;
+
+}
+input{
+    width: 200px;
+    height: 100px;
+    background: yellow;
+}
+
+
+body{
+    background: gray;
+
+}
+input{
+    width: 200px;
+    height: 100px;
+    background: blue;
+}
