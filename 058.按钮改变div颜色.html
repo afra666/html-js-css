@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+
+        }
+
+    </style>
+    <script>
+        function toBlack() {
+            let oDiv=document.getElementById("div1");
+            oDiv.style.background="black";
+        }
+        function toOrange() {
+            let oDiv=document.getElementById("div1");
+            oDiv.style.background="orange";
+        }
+        function toYellow() {
+            let oDiv=document.getElementById("div1");
+            oDiv.style.background="yellow";
+        }
+    </script>
+</head>
+
+<body>
+<div id="div1"></div>
+<input type="button" value="toBlack" onclick="toBlack()"/>
+<input type="button" value="toOrange" onclick="toOrange()"/>
+<input type="button" value="toYellow" onclick="toYellow()"/>
+</body>
+</html>
