@@ -10,7 +10,14 @@
             b1.onclick=function () {
                 let a=parseInt(t1.value);
                 let b=parseInt(t2.value);
+                if (isNaN(a)) {
+                  alert("第一个数字有误");
+                }else if(isNaN(b)){
+                    alert("第二个数字有误");
+                }
+                else if(s=true){
                 alert(a+b);
+                }
             }
         }
     </script>
