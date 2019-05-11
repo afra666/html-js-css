@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 600px;
+            height: 600px;
+            background: #85afe1;
+        }
+    </style>
+    <script>
+    window.onload=function () {
+        let oDiv=document.getElementById("div1");
+        alert(getComputedStyle(oDiv,false).width);
+    }
+    </script>
+</head>
+<body>
+<div id="div1">
+
+</div>
+</body>
+</html>
