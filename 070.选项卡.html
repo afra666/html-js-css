@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 .active{
+
+            background: cadetblue;
+        }
+        #div1 div{
+            width: 300px;
+            width: 300px;
+            border: 1px solid cornflowerblue;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            let oDiv=document.getElementById("div1");
+            let divArr=oDiv.getElementsByTagName("div");
+            let btArr=oDiv.getElementsByTagName("input");
+            for (let i = 0; i < btArr.length; i++) {
+
+                btArr[i].index=i;//自定义index属性
+                btArr[i].onclick=function () {
+                    for (let j = 0; j < btArr.length; j++) {
+                        btArr[j].className='';
+                        divArr[j].style.display='none';
+
+                    }
+                    this.className='active';
+                    divArr[this.index].style.display='block';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+<!--     点击之后的颜色-->
+<!--    二级div样式-->
+    <input class="active" type="button" value="西游记"/>
+    <input type="button" value="水浒传"/>
+    <input type="button" value="三国演义"/>
+    <input type="button" value="红楼梦"/>
+    <div style="display: block">西游记作者:吴承恩</div>
+    <div >水浒传作者:施耐庵</div>
+    <div >三国演义作者:罗贯中</div>
+    <div >红楼梦作者:曹雪芹</div>
+</div>
+</body>
+</html>
