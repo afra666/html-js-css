@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+window.onload=function () {
+    let oUl=document.getElementById("ul1");
+    for (let i = 0; i < oUl.childNodes.length; i++) {
+        //==3文本节点,==1元素节点
+        if (oUl.childNodes[i].nodeType==1) {
+            oUl.childNodes[i].style.background='blue';
+        }
+    }
+
+}
+</script>
+<body>
+<ul id="ul1">
+    <li></li>
+    <li></li>
+</ul>
+
+</body>
+</html>
