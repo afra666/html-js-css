@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background: lightskyblue;
+            position: absolute;
+        }
+
+    </style>
+    <script>
+
+        // 鼠标移动事件
+        document.onmousemove=function () {
+            let oDiv=document.getElementById("div1");
+            let oTxt=document.getElementById("txt1");
+            oDiv.style.left=event.clientX+'px';
+            oDiv.style.top=event.clientY+'px';
+            oTxt.value=oDiv.style.left+","+oDiv.style.top;
+        }
+    </script>
+</head>
+
+<body>
+<div id="div1"><input id="txt1" type="text" style="width: 90px"/>
+</div>
+
+</body>
+</html>
