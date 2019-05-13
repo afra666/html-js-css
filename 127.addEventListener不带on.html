@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>attachEvent</title>
+    <script>
+    window.onload=function () {
+        let oBtn=document.getElementById("btn1");
+
+        oBtn.addEventListener('click',function () {
+            alert(1);
+        });
+        oBtn.addEventListener('click',function () {
+            alert(2);
+        });
+    }
+    </script>
+</head>
+<body>
+<input id="btn1" type="button" value="Show two alerts">
+</body>
+</html>
