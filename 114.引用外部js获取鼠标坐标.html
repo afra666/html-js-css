@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse(x,y)</title>
+    <script src="getLocation.js">
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>
+
+
+//getLocation.js
+window.onload=function () {
+    let oDiv=document.getElementById("div1");
+    oDiv.innerHTML="Mouse(x,y)";
+    let get=function () {
+
+        let x=event.clientX;
+        let y=event.clientY;
+        oDiv.innerHTML="Mouse("+x+","+y+")";
+    };
+    document.onclick=function () {
+        get();
+    }
+}
