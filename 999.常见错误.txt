@@ -1,0 +1,2 @@
+1.无法显示指定内容:script没有加window.onload事件
+2.无法移动div的位置:没有加position:absolute属性样式
