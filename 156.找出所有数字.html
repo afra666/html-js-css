@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!--    引入js-->
+    <title>Ajax read text</title><script src="myAjax.js">
+    </script>
+    <script>
+    window.onload=function () {
+
+        let oBtn=document.getElementById("btn1");
+        let oTxt1=document.getElementById("txtarea1");
+        let oTxt2=document.getElementById("txtarea2");
+        ajax("a.txt",function (strIntxt) {
+            // 写在内部一次传递
+            oTxt1.innerHTML=strIntxt;
+        });
+        oBtn.onclick=function () {
+
+            oTxt2.value="Waiting...."
+            let str=oTxt1.value;
+
+            // 先设置一个数组,tmp用来存放不间断数字,如a123bc中的123,使用tmp+=charAt(i)
+            //再设置一个数组用来存放数字组成的数组,当遇到任意非数字时候使用push
+            let tmp="";
+            let iArr=[];
+            for (let i = 0; i < str.length; i++) {
+                if (str.charAt(i)>='0'&&str.charAt(i)<='9') {
+                    tmp+=str.charAt(i);
+                }else{
+                    //否则为字母或空格,如果tmp中有值的话,push
+                    if (tmp) {
+                        iArr.push(tmp);
+                        tmp="";
+                    }
+                }
+            }
+            //读完字符串后可能最后需要push一次
+            if (tmp) {
+                iArr.push(tmp);
+                tmp="";
+            }
+            oTxt2.value=iArr;
+        }
+    }
+    </script>
+</head>
+<body>
+
+<textarea id="txtarea1" style="width: 540px;height: 600px;" placeholder="Input string such as hello123 456world1024"></textarea>
+<textarea id="txtarea2" style="width: 540px;height: 600px;"></textarea><br>
+<input id="btn1" type="button" value="Find all numbers"/>
+</body>
+</html>
+
+
+
+
+//myAjax.js
+function ajax(url,fnSuc,fnFail) {
+
+        //1.创建Ajax,http请求
+        let oAjax=new XMLHttpRequest();
+
+        //2.连接服务器,open(方法,文件名,异步传输:true)
+        oAjax.open('GET',url+"?t="+new Date().getTime(),true)
+
+        //3.send发送请求
+        oAjax.send();
+
+        //4.接收返回
+        oAjax.onreadystatechange=function () {
+
+            //响应解析已完成oAjax.readyState==4
+            //读取完成
+            if (oAjax.readyState==4) {
+
+                if (oAjax.status==200) {
+
+                    fnSuc(oAjax.responseText);
+                    // alert("OK:"+oAjax.responseText);
+                }else {
+                    alert("FAILED,"+oAjax.status);
+                    if (fnFail) {
+
+                        fnFail(oAjax.status);
+
+                    }
+                }
+            }
+        }
+}
+
+
+
+//a.txt
+       历届奥运会举办城市和时间
+
+雅典	 希腊	欧洲	第1届	1896年
+巴黎	 法国	欧洲	第2届	1900年
+圣路易斯	 美国	北美洲	第3届	1904年
+伦敦	 英国	欧洲	第4届	1908年
+斯德哥尔摩	 瑞典	欧洲	第5届	1912年
+柏林	 德意志帝国	欧洲	第6届	1916年
+安特卫普	 比利时	欧洲	第7届	1920年
+巴黎	 法国	欧洲	第8届	1924年
+阿姆斯特丹	 荷兰	欧洲	第9届	1928年
+洛杉矶	 美国	北美洲	第10届	1932年
+柏林	 纳粹德国	欧洲	第11届	1936年
+东京	 大日本帝国	亚洲	第12届	1940年
+伦敦	 英国	欧洲	第13届	1944年
+伦敦	 英国	欧洲	第14届	1948年
+赫尔辛基	 芬兰	欧洲	第15届	1952年
+墨尔本	 澳大利亚	大洋洲	第16届	1956年
+斯德哥尔摩	 瑞典	欧洲
+罗马	 意大利	欧洲	第17届	1960年
+东京	 日本	亚洲	第18届	1964年
+墨西哥城	 墨西哥	北美洲	第19届	1968年
+慕尼黑	 西德	欧洲	第20届	1972年
+蒙特利尔	 加拿大	北美洲	第21届	1976年
+莫斯科	 苏联	欧洲[e]	第22届	1980年
+洛杉矶	 美国	北美洲	第23届	1984年
+汉城	 韩国	亚洲	第24届	1988年
+巴塞罗那	 西班牙	欧洲	第25届	1992年
+亚特兰大	 美国	北美洲	第26届	1996年
+悉尼	 澳大利亚	大洋洲	第27届	2000年
+雅典	 希腊	欧洲	第28届	2004年
+北京	 中国	亚洲	第29届	2008年
+伦敦	 英国	欧洲	第30届	2012年
+里约热内卢	 巴西	南美洲	第31届	2016年
+东京	 日本	亚洲	第32届	2020年
+巴黎	 法国	欧洲	第33届	2024年
+洛杉矶	 美国	北美洲	第34届	2028年
+
+
+
