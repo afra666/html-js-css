@@ -1,0 +1,77 @@
+<!--1.普通的工厂模式-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Animal() {
+            this.foot=4;
+            this.show=function () {
+                alert(this.foot);
+            }
+        }
+        let a1=new Animal();
+        a1.show();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<!--2.使用call(this)来继承Animal-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    function Animal() {
+        this.foot=4;
+        this.show=function () {
+            alert(this.foot);
+        }
+    }
+    function reptile() {
+        Animal.call(this);
+    }
+    let r1=new reptile();
+    r1.show();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+<!--3.使用原型prototype+call(this)来继承Animal-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Animal() {
+            this.foot=4;
+
+        }
+        Animal.prototype.show=function () {
+            alert(this.foot);
+        }
+        function Reptile() {
+            Animal.call(this);
+        }
+        Reptile.prototype=Animal.prototype;
+        let r1=new Reptile();
+        // 省略
+        r1.show();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
