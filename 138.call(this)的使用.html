@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    function show(a,b) {
+        alert("this是:"+this+"\na是:"+a+"\nb是"+b);
+    }
+    show(1,2);
+    show.call(9,1,2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
