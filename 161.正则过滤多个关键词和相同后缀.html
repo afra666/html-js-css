@@ -1,0 +1,26 @@
+<!--正则-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script>
+window.onload=function () {
+    let oBtn=document.getElementById("btn1");
+    let oTxt1=document.getElementById("txtarea1");
+    let oTxt2=document.getElementById("txtarea2");
+    oBtn.onclick=function () {
+        let re=/(surface|mac)book/ig;
+        oTxt2.value=oTxt1.value.match(re);
+    }
+}
+
+</script>
+</head>
+<body>
+<textarea id="txtarea1" rows="10" cols="50">
+    Macbook notebook surfacebook  mathbook</textarea><br>
+<input id="btn1" type="button" value="过滤"/><br>
+<textarea id="txtarea2"  rows="10" cols="50"></textarea>
+</body>
+</html>
