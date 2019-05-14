@@ -1,0 +1,19 @@
+<!--g表示全局搜索,d+表示连续数字;-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    let str="雅典 希腊欧洲第1届1896年  巴黎 法国欧洲第2届1900年 圣路易斯 美国北美洲第3届1904"
+    let re1=/\d/g;
+    let re2=/\d\d/g;
+    let re3=/\d+/g;
+    alert(str.match(re1));
+    alert(str.match(re2));
+    alert(str.match(re3));
+    </script>
+</head>
+<body>
+</body>
+</html>
