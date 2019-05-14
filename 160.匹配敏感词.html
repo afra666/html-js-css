@@ -1,0 +1,27 @@
+<!--使用replace加正则过滤-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script>
+window.onload=function () {
+    let oBtn=document.getElementById("btn1");
+    let oTxt1=document.getElementById("txtarea1");
+    let oTxt2=document.getElementById("txtarea2");
+    oBtn.onclick=function () {
+        let re=/京东|淘宝|网购/g;
+        oTxt2.value=oTxt1.value.replace(re,"***");
+    }
+}
+
+</script>
+</head>
+<body>
+<textarea id="txtarea1" rows="10" cols="50">
+    let re=/京东|淘宝|网购/g;
+    oTxt2.value=oTxt1.value.replace(re,"***");</textarea><br>
+<input id="btn1" type="button" value="过滤"/><br>
+<textarea id="txtarea2"  rows="10" cols="50"></textarea>
+</body>
+</html>
