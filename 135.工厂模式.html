@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    function show(a,b) {
+
+        this.name=function () {
+            alert(a);
+        }
+        this.cell=function () {
+            alert(b)
+        }
+
+    }
+    let show1=new show("John","123456");
+    show1.name();
+    show1.cell();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
