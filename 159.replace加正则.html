@@ -1,0 +1,19 @@
+<!--使用replace加正则  替换大小写字母,i忽略大小写,g全局-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script>
+    //替换所有的a或A为z
+let str="Aabc123abcA +-*/123a"
+    let re=/a/ig;
+alert(str.replace(re,"z"))
+</script>
+</head>
+<body>
+<textarea id="txtarea1"></textarea><br>
+<input id="btn1" type="button" value="Run"/><br>
+<textarea id="txtarea2"></textarea>
+</body>
+</html>
