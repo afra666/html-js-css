@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Drag div</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background: lightskyblue;
+            position: absolute;
+        }
+
+    </style>
+    <script>
+        let oDiv=null;
+        let disX=0;
+        let disY=0;
+
+        function move() {
+            // 平移小位置距离
+            oDiv.style.left=event.clientX-disX+"px";
+            oDiv.style.top=event.clientY-disY+"px";
+
+        }
+        function up() {
+            document.onmousemove=null;
+            document.onmouseup=null;
+        }
+        function down() {
+
+            disX=event.clientX-oDiv.offsetLeft;
+            disY=event.clientY-oDiv.offsetTop;
+            document.onmousemove= move;
+            document.onmouseup=up;
+
+        }
+       window.onload=function () {
+            // 这行放onload
+           oDiv=document.getElementById("div1");
+            // 错误写法 oDiv.onmousedown=down();
+           oDiv.onmousedown=down;
+       }
+    </script>
+</head>
+
+<body>
+<div id="div1"></div>
+</body>
+</html>
