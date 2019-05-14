@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 引用
+    let arr1=[1,2,3];
+    let arr2=arr1;
+    arr2.push(4);
+    alert(arr1);
+
+    // 单个赋值避免引用
+    let arr3=[6,7,8];
+    let arr4=[];
+    for (let i = 0; i < arr3.length; i++) {
+        arr4[i]=arr3[i];
+    }
+    arr4.push(9)
+    alert(arr3);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
