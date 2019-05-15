@@ -4,3 +4,4 @@
 4.使用Ajax读取R.json无反应或弹出空白弹窗:(1)是否加了xhr.onreadystatechange注意有on.(2)chrome跨源读取问题可通过webstorm或者git上传来解决.
 5.script中的函数没有运行:(1)加载body的onload中.(2)加双括号.(3)在函数后运行一次.
 6.无法drawImage:没有加getContext("2d")
+7.无法drawImage:index.html没有引入js,主程序Game中没有调用
