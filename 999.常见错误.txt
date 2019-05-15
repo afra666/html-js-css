@@ -2,3 +2,4 @@
 2.无法移动div的位置:没有加position:absolute属性样式
 3.canvas的drawImage无法显示图片:把ctx.drawImage(bg_day,0,0);放在bg_day.onload中
 4.使用Ajax读取R.json无反应或弹出空白弹窗:(1)是否加了xhr.onreadystatechange注意有on.(2)chrome跨源读取问题可通过webstorm或者git上传来解决.
+5.script中的函数没有运行:(1)加载body的onload中.(2)加双括号.(3)在函数后运行一次.
