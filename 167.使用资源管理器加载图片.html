@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            border: solid 1px skyblue;
+        }
+    </style>
+</head>
+<body onload="start()">
+<canvas  width="400" height="600"></canvas>
+<!--对canvas操作的js要放到canvas下面-->
+<script type="text/javascript">
+
+        //按照标签名进行静态选择
+        let c=document.querySelector("canvas");
+        let ctx=c.getContext("2d");
+        //大括号定义键值对对象
+        let r={};
+        //Ajax读取R.json
+        let xhr=new XMLHttpRequest();
+        xhr.open("get","R.json",true);
+        xhr.onreadystatechange=function () {
+            if (xhr.readyState==4) {
+                let jsonObj=JSON.parse(xhr.responseText);
+                let cnt=0;
+                for (let i = 0; i <jsonObj.images.length; i++) {
+                    //创建R中的键json.images[i].name
+                    r[jsonObj.images[i].name]=new Image();
+                    //赋值
+                    r[jsonObj.images[i].name].src=jsonObj.images[i].url;
+
+                    r[jsonObj.images[i].name].onload=function () {
+                        cnt++;
+                        if (cnt==jsonObj.images.length) {
+                            console.log("Load success !");
+                        }
+                    }
+                }
+
+            }
+        };
+        xhr.send(null);
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        function start() {
+            let framesNum=0;
+            setInterval(function () {
+                framesNum++;
+                ctx.clearRect(0,0,c.width,c.height);
+
+
+                ctx.drawImage(r.bg_day,0,0);
+
+                ctx.fillText(framesNum.toString(),10,10);
+                },20);
+        }
+
+</script>
+</body>
+</html>
