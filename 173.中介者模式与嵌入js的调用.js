@@ -18,6 +18,7 @@
 <script src="js/Pipe.js"></script>
 <script>
     //不能加window.onload,否则Pipe.js中无法识别game
+    //new Game("123")等价于window.Game(123);
     let game=new Game("123");
     new Pipe();
 
