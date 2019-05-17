@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>■Don't Touch White■</title>
+</head>
+<body id="mainBody">
+<style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+</style>
+<script src="Game.js"></script>
+<script >
+    start();
+</script>
+</body>
+</html>
+
+
+
+function start() {
+    let gameCanvas=document.getElementById("gameCanvas");
+    createBlock();
+    createBlock();
+    createBlock();
+    createBlock();
+}
+function createBlock() {
+    let c=document.createElement("canvas");
+    c.width=100;
+    c.height=100;
+    c.style.border="1px solid black"
+    c.background="black";
+    document.body.appendChild(c);
+}
+
+
+
+
