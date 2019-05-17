@@ -11,7 +11,6 @@
         padding: 0;
         overflow: hidden;
     }
-
 </style>
 <script src="Game.js"></script>
 <script >
@@ -22,22 +21,17 @@
 
 
 
+let bW=document.documentElement.clientWidth;
+let bH=document.documentElement.clientHeight;
 function start() {
-    let gameCanvas=document.getElementById("gameCanvas");
-    createBlock();
     createBlock();
     createBlock();
     createBlock();
 }
 function createBlock() {
     let c=document.createElement("canvas");
-    c.width=100;
-    c.height=100;
-    c.style.border="1px solid black"
-    c.background="black";
+    c.width=bW/3;
+    c.height=bH/3;
+    c.style.background="black";
     document.body.appendChild(c);
 }
-
-
-
-
