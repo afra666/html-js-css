@@ -1,0 +1,78 @@
+<!--示例1   在html中的顺序有关系-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script src="Box.js"></script>
+<script src="Game.js"></script>
+</body>
+</html>
+
+
+//Game.js
+function Game() {
+    let box=new Box();
+    console.log(box);
+    box.x++;
+    box.y--;
+    console.log(box.x);
+    console.log(box.y);
+    console.log(box.words);
+    console.log(box.color());
+}
+Game();
+
+
+
+//Box.js
+function Box(){
+    this.x=5;
+    this.y=5;
+    this.words="这是一个Class Box";
+    this.color=function() {
+        return "cyan";
+    }
+}
+
+
+
+
+<!--示例2  在html中的顺序有关系-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas"></canvas>
+<script src="Box.js"></script>
+<script src="Game.js"></script>
+</body>
+</html>
+
+
+
+//Game.js
+function Game() {
+    let box=new Box();
+    let c=document.getElementById("myCanvas");
+    let ctx=c.getContext("2d");
+    c.style.background="cyan";
+    ctx.fillText(box.words,20,20);
+}
+Game();
+
+//Box.js
+function Box(){
+    this.x=5;
+    this.y=5;
+    this.words="这是一个Class Box";
+    this.color=function() {
+        return "cyan";
+    }
+}
