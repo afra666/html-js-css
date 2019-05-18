@@ -5,3 +5,4 @@
 5.script中的函数没有运行:(1)加载body的onload中.(2)加双括号.(3)在函数后运行一次.
 6.无法drawImage:没有加getContext("2d")
 7.无法drawImage:index.html没有引入js,主程序Game中没有调用
+8.fillText没有显出来文字:把语句放到window.onload中即可ctx.font = "48px serif";ctx.fillText("Hello world", 50, 300);
