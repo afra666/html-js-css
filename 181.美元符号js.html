@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="txt1" type="text"/>
+<script >
+    function $(id) {
+        // 仅当id="txt1"这种字符串时才返回dom i,如果是id=obj这种obj时无任何返回值,返回原值id=obj
+        return (typeof id=="object")?id:document.getElementById(id);
+    };
+    //正确用法,推荐
+    console.log($("txt1"));
+    //正确用法,不建议使用
+    console.log($(txt1));
+    //三种错误用法
+    console.log($(1));
+    console.log($(document));//返回原值obj
+    console.log($("#txt1"));
+</script>
+</body>
+</html>
+
+<br>
+/**  $.js
+function $(id) {
+// 仅当id="txt1"这种字符串时才返回dom i,如果是id=obj这种obj时无任何返回值,返回原值id=obj
+return (typeof id=="object")?id:document.getElementById(id);
+};
+*/
