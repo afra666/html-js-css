@@ -8,3 +8,8 @@
 8.fillText没有显出来文字:把语句放到window.onload中即可ctx.font = "48px serif";ctx.fillText("Hello world", 50, 300);
 9.drawImage卡顿:去掉img.onload事件
 10.4.Hero.js:13 Uncaught TypeError: Failed to execute 'drawImage':drawImage的参数缺少或者不是图片格式
+11.点击按键没反应:加在window.onload中,然后使用   window.onload=function () {
+        window.onkeypress=function () {
+            alert(event.which)
+        }
+    }
